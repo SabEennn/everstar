@@ -1,0 +1,8 @@
+what do i need
+
+1. one div whcih  contains the bike 
+the container should contani all the bikes 
+those bikes should be flex-wrapped, with equally distributed
+
+div container (flex, just-center, item-center)
+three divs 

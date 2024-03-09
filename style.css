@@ -1,4 +1,3 @@
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 *{
 	margin:0;
@@ -17,12 +16,17 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 	width:100%;
 }
 
+.swipe{
+	height:90vh;
+	margin-top: 10vh;
+}
 
 	/* this is copy paste from the swiperjs */
 	body {
 		position: relative;
 		height: 100%;
 }
+
 
 body {
 		background: #eee;

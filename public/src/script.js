@@ -1,9 +1,9 @@
 var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 100,
+  spaceBetween: 30,
   centeredSlides: true,
   autoplay: {
-    delay: 1500,
+    delay: 2500,
+    disableOnInteraction: false,
   },
   pagination: {
     el: ".swiper-pagination",
@@ -15,10 +15,18 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
-const listen = document.body.addEventListener("scroll", (e) => {
-  console.log(window.scrollY);
-});
+let handleScroll = () => {
+  let currentScroll =
+    document.body.scrollTop || document.documentElement.scrollTop;
 
-const handleScroll = () => {
-  console.log("a");
+  if (currentScroll > handleScroll.lastScroll) {
+    document.getElementById("nav").style.top = "-100px";
+  } else {
+    //scroll up
+    document.getElementById("nav").style.top = "0";
+  }
+  handleScroll.lastScroll = currentScroll;
 };
+
+handleScroll.lastScroll = 0;
+window.addEventListener("scroll", handleScroll, false);

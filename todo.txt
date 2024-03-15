@@ -1,3 +1,0 @@
-shop bike portion
-contain the bike and will be clickable 
-on click will direct to inner page containing images of different views of the bike

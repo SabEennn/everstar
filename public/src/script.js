@@ -1,3 +1,8 @@
+const scroll = new LocomotiveScroll({
+  el: document.querySelector("[data-scroll-container]"),
+  smooth: true,
+});
+
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,
   centeredSlides: true,

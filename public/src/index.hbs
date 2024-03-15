@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+ {{> headers}}
+
+	<body onscroll="handleScroll()">
+
+		{{> navbar}}
+
+	
+<div class="landing-page bg-[#f1f1f1] section overflow-hidden ">
+	<div class="swiper mySwiper">
+    <div class="swiper-wrapper h-[88vh]">
+        <div class="swiper-slide flex items-center justify-center">
+            <img class="object-contain h-full" src="images\bike1\bike1ko2.jpg" alt="bike">
+        </div>
+        <div class="swiper-slide flex items-center justify-center">
+            <img class="object-contain h-full" src="images\bike1\bike1ko3.jpg" alt="bike">
+        </div>
+        <!-- Add more swiper-slide elements as needed -->
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+
+		
+
+	<section class="p-5">
+
+
+			<div
+				class="p-5 text-center font-bold text-4xl  my-10">
+				Shop Bikes
+			</div>
+
+		<div class="bike-container  flex flex-col sm:flex-row items-center  justify-between h-full gap-5">
+
+			<!-- first bike info -->
+				<a href="/bike1" class="">
+					<div
+				class="hover:scale-105 max-w-full sm:max-w-sm bg-[#f3f0f3] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5 ">
+			
+					<img class="rounded-t-lg mt-20"
+						src="https://assets.specialized.com/i/specialized/95122-70_TERO-30-OAKGRNMET-SMK_HERO?$scom-pdp-product-image-zoom$&fmt=auto"
+						alt="" />
+				
+				<div class="py-5">
+					<a href="#">
+						<h5 class="mb-2 text-lg font-light tracking-tight text-center text-gray-500 dark:text-white ">
+							best bike in the world</h5>
+					</a>
+				</div>
+			</div></a>
+
+			<!-- second bike info -->
+
+			<div
+				class="max-w-full sm:max-w-sm bg-[#f3f0f3] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5 ">
+				<a href="/bike2">
+					<img class="rounded-t-lg mt-20"
+						src="https://assets.specialized.com/i/specialized/95122-70_TERO-30-OAKGRNMET-SMK_HERO?$scom-pdp-product-image-zoom$&fmt=auto"
+						alt="" />
+				</a>
+				<div class="py-5">
+					<a href="#">
+						<h5 class="mb-2 text-lg font-light tracking-tight text-center text-gray-500 dark:text-white ">
+							best bike in the world</h5>
+					</a>
+				</div>
+			</div>
+
+			<!-- third bike info -->
+			<div
+				class="max-w-full sm:max-w-sm bg-[#f3f0f3] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5 ">
+				<a href="/bike3">
+					<img class="rounded-t-lg mt-20"
+						src="https://assets.specialized.com/i/specialized/95122-70_TERO-30-OAKGRNMET-SMK_HERO?$scom-pdp-product-image-zoom$&fmt=auto"
+						alt="" />
+				</a>
+				<div class="py-5">
+					<a href="#">
+						<h5 class="mb-2 text-lg font-light tracking-tight text-center text-gray-500 dark:text-white ">
+							best bike in the world</h5>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+		
+  {{> footer}}
+
+		{{> links}}
+	</body>
+
+</html>

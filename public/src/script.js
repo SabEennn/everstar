@@ -14,3 +14,11 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+const listen = document.body.addEventListener("scroll", (e) => {
+  console.log(window.scrollY);
+});
+
+const handleScroll = () => {
+  console.log("a");
+};

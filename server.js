@@ -1,21 +1,35 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const hbs = require("express-hbs");
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/bikes1", (req, res) => {
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine(
+  "hbs",
+  hbs.express4({
+    partialsDir: __dirname + "/views/partials",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", __dirname + "/views");
+app.get("/", (req, res) => {
   // Send the HTML file as the response
-  res.sendFile(path.join(__dirname, "public", "src", "pages", "yourbike.html"));
+  res.render(path.join(__dirname, "public", "src", "index.hbs"));
 });
-app.get("/bikes2", (req, res) => {
+app.get("/bike1", (req, res) => {
   // Send the HTML file as the response
-  res.sendFile(path.join(__dirname, "public", "src", "pages", "yourbike.html"));
+  res.render(path.join(__dirname, "public", "src", "pages", "yourbike.hbs"));
 });
-app.get("/bikes3", (req, res) => {
+app.get("/bike2", (req, res) => {
   // Send the HTML file as the response
-  res.sendFile(path.join(__dirname, "public", "src", "pages", "yourbike.html"));
+  res.render(path.join(__dirname, "public", "src", "pages", "yourbike.hbs"));
+});
+app.get("/bike3", (req, res) => {
+  // Send the HTML file as the response
+  res.render(path.join(__dirname, "public", "src", "pages", "yourbike.hbs"));
 });
 
 app.get("/gears", (req, res) => {

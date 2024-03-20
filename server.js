@@ -30,14 +30,19 @@ app.get('/bikes/:gears', (req, res) => {
 
 app.get('/:bike', (req, res) => {
   // Send the HTML file as the response
-  const filtered = bikedata.filter((e)=>{
-      return e.id == req.params.bike
+  const filtered = bikedata.filter((e) => {
+    return e.id == req.params.bike
   })
-  res.render('pages/individualBike', { title: filtered[0].name , layout: 'mainLayout', bikedata: filtered[0] })
+  res.render('pages/individualBike', {
+    title: filtered[0].name,
+    layout: 'mainLayout',
+    bikedata: filtered[0],
+  })
 })
 
 // Start the server
 const PORT = 5500
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+app.listen(PORT, msg)
+function msg() {
+  console.log(`Server is running on port 5500`)
+}

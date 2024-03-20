@@ -1,1 +1,15 @@
 package for language currency 
+
+
+1. make the color choice links clickable 
+2. adjust the margin/padding in the  bikes lists 
+3. do the adjustment on the mobile point of view on the bike lists 
+4. to be listed
+
+
+okay here is the thing. 
+what i need is 
+i have a aray of object that contains differnet attributes. 
+one of the attribute is the aray of is the imageLinks
+
+now i need a div where i get each imageLinks' color stored in div of the color's number

@@ -30,13 +30,14 @@
 
     <div class="bike-container grid grid-cols-1 md:grid-cols-2 gap-10">
       {{#each bikedata}}
-      <div class="bikes shadow-lg w-full sm:w-md min-h-[30vh]">
+      <div class="bikes shadow-lg w-full sm:w-md min-h-[20vh] p-20">
         <a href="/{{ this.id }}">
           <div>
-            <img class="h-auto max-w-full rounded-lg" src="{{this.imageLinks.[0]}}" alt="" /></div
+            <img class="h-auto max-w-full rounded-lg" src="{{this.variants.[0].imageLink}}" /></div
         ></a>
       </div>
       {{/each}}
+      <script></script>
     </div>
   </section>
 </div>

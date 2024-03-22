@@ -4,6 +4,22 @@ const path = require('path')
 const hbs = require('express-hbs')
 const bikedata = require('./db/data')
 
+// Define a Handlebars helper to perform multiplication
+hbs.registerHelper('multiply', function (num1, num2) {
+  return num1 * num2
+})
+hbs.registerHelper('beautifyNumber', (usd) => {
+  const nrs = usd * 133.76
+  const priceSymbol = ['K', 'L', 'Cr']
+  if (nrs >= 1000 && nrs < 100000) {
+    return parseFloat(nrs / 1000).toFixed(2) + ' ' + priceSymbol[0]
+  } else if (nrs >= 100000 && nrs < 10000000) {
+    return parseFloat(nrs / 100000).toFixed(2) + ' ' + priceSymbol[1]
+  }
+
+  return parseFloat(nrs).toFixed(2)
+})
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -37,6 +53,7 @@ app.get('/:bike', (req, res) => {
     title: filtered[0].name,
     layout: 'mainLayout',
     bikedata: filtered[0],
+    variant: req.query.variant,
   })
 })
 

@@ -1,32 +1,98 @@
-<div class="h-[88vh] overflow-hidden">
+<div class="overflow-hidden">
   <div
-    class="rounded-lg shadow md:flex-row flex-col dark:bg-gray-800 dark:border-gray-700 flex justify-center"
+    class="rounded-lg shadow flex-wrap md:flex-row flex-col dark:bg-gray-800 dark:border-gray-700 flex justify-center"
   >
     <div class="h-[88vh]">
-      <img class="h-full w-full object-contain" src="{{bikedata.imageLinks.[0]}}" alt="" />
+      <img
+        id="imageHolder"
+        class="h-full w-full object-contain"
+        src="{{bikedata.variants.[0].imageLink}}"
+        alt=""
+      />
     </div>
-    <div class="bg-slate-200 m-10 p-5 my-36 h-auto">
-      <div href="#">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {{ bikedata.name }}
-        </h5>
+    <div
+      class="bg-slate-950/5 backdrop-blur-sm py-4 flex flex-col justify-between m-14 px-5 my-36 h-auto rounded-xl"
+    >
+      <div class="">
+        <div class="w-60">
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ bikedata.name }}
+          </h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 word">
+            {{ bikedata.description }}
+          </p>
+        </div>
       </div>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Rs.{{ bikedata.price }}00</p>
 
-      {{!--
-      <div class="ColorOption flex gap-3">
-        <span class="color1 rounded-full h-8 aspect-square bg-red-300"></span>
-        <span class="color2 rounded-full h-8 aspect-square bg-red-300"></span>
-        <span class="color3 rounded-full h-8 aspect-square bg-red-300"></span>
-        <span class="color4 rounded-full h-8 aspect-square bg-red-300"></span>
+      <div class="mt-5">
+        <div class="flex gap-5 cursor-crosshair">
+          {{#each bikedata.variants}}
+          <div
+            onclick="handleColor( '{{ this.imageLink }}','{{ this.colorName }}' )"
+            class=" hover:scale-105 bg-[{{this.hexCodes.[0]}}] h-10 aspect-square rounded-full "
+          ></div>
+          {{/each}}
+        </div>
+
+        <div class="wrapper flex justify-between items-center my-5">
+          <button
+            onclick="handleCart()"
+            value="{{bikedata.variants.[0].colorName}}"
+            id="cart"
+            class="group my-2 p-2 px-4 bg-blue-700 hover:bg-blue-800 text-gray-200 hover:text-white rounded-full text-xs font-medium flex gap-2 justify-center items-center relative"
+          >
+            <span class="font-sans">Add To Cart</span>
+            <span
+              class="transition-all duration-500 ease-in-out w-0 flex items-center justify-center overflow-hidden group-hover:w-4"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+          </button>
+          <p class="my-2 p-2 px-4 font-normal text-gray-700 dark:text-gray-400">
+            Rs. {{beautifyNumber bikedata.price }}
+          </p>
+        </div>
       </div>
-      --}}
-      <!-- Existing content displaying other bike details -->
-
-      <!-- Loop through imageLinks array and display image divs -->
-      {{#each bikedata.imageLinks}}
-      <div class="h-10 aspect-square rounded-full bg-black flex gap-5"></div>
-      {{/each}}
     </div>
   </div>
 </div>
+<script>
+  let arr = []
+  let arr1 = JSON.parse(localStorage.getItem('cart'))
+  console.log(arr1)
+  arr = arr1 ? arr1 : []
+  const handleColor = (imageLink, color) => {
+    const imageHolder = document.getElementById('imageHolder')
+    imageHolder.src = imageLink
+    document.getElementById('cart').value = color
+  }
+
+  const handleCart = () => {
+    const colorValue = document.getElementById('cart').value
+    const cart = {
+      name: '{{bikedata.name}}',
+      price: '{{bikedata.price}}',
+      description: '{{bikedata.description}}',
+      colorValue: `${colorValue}`,
+    }
+
+    arr.push(cart)
+
+    localStorage.setItem('cart', JSON.stringify(arr))
+
+    Toastify({
+      text: `{{bikedata.name}} is added to the cart`,
+
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        color: '#374151',
+        background: 'transparent',
+      },
+    }).showToast()
+  }
+</script>

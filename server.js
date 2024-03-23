@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/bikes/:gears', (req, res) => {
-  res.send('Hey, here are your gears')
+  res.send('Hey, I am amreet')
 })
 
 app.get('/:bike', (req, res) => {

@@ -48,4 +48,4 @@ const price = (nrs) => {
   return nrs
 }
 
-console.log(bikedata.variants.hexCodes[1])
+// console.log(bikedata.variants.hexCodes[1])

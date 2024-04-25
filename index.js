@@ -49,7 +49,7 @@ app.get('/:bike', (req, res) => {
   const filtered = bikedata.filter((e) => {
     return e.id == req.params.bike
   })
-  res.render('pages/individualBike', {
+  res.render('pages/IndividualBike', {
     title: filtered[0].name,
     layout: 'mainLayout',
     bikedata: filtered[0],

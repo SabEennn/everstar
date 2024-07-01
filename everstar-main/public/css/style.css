@@ -106,3 +106,18 @@ html.has-scroll-dragging {
   right: auto;
   bottom: 0;
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ /* for clear cart button */
+@layer utilities {
+  .CartBtn:hover .IconContainer {
+    @apply translate-x-[58px] rounded-full transition duration-500;
+  }
+  .CartBtn:hover .text {
+    @apply translate-x-[10px] transition duration-500;
+  }
+}

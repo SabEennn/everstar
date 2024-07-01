@@ -1,9 +1,26 @@
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://kit.fontawesome.com/ccc97fc384.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="swiper/swiper-bundle.min.js"></script>
+
+<script src="tailwind/tailwind.js"></script>
+<script src="font-awesome/ccc97fc384.js" crossorigin="anonymous"></script>
+<script src="flowbite/flowbite.min.js"></script>
+
+<script src="handlebars/handlebars.js"></script>
+
+<script src="locomotive/locomotive-scroll.min.js"></script>
+<script type="text/javascript" src="toastify/toastify-js.js"></script>
 <script src="js/script.js"></script>
 <script src="js/bikescript.js"></script>
+<script>
+    const cartItem = document.getElementById("displayCart");
+    var isShown = false;
+    function displayItems() {
+        if (isShown) {
+            isShown = false
+            cartItem.style.display = "none";
+        }
+        else {
+            isShown = true;
+            cartItem.style.display = "block"
+        }
+    }
+</script>

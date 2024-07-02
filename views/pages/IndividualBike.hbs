@@ -1,0 +1,86 @@
+<div class="overflow-hidden">
+  <div
+    class="rounded-lg shadow flex-wrap md:flex-row flex-col dark:bg-gray-800 dark:border-gray-700 flex justify-center">
+    <div class="h-[88vh]">
+      <img id="imageHolder" class="h-full w-full object-contain" src="{{bikedata.variants.[0].imageLink}}" alt="" />
+    </div>
+    <div class="bg-slate-950/5 kbackdrop-blur-sm py-4 flex flex-col justify-between m-14 px-5 my-36 h-auto rounded-xl">
+      <div class="">
+        <div class="w-60">
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ bikedata.name }}
+          </h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 word">
+            {{ bikedata.description }}
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="flex gap-5 cursor-crosshair">
+          {{#each bikedata.variants}}
+          <div onclick="handleColor( '{{ this.imageLink }}','{{ this.colorName }}' )"
+            class=" hover:scale-105 bg-[{{this.hexCodes.[0]}}] h-10 aspect-square rounded-full "></div>
+          {{/each}}
+        </div>
+
+        <div class="wrapper flex justify-between items-center my-5">
+          <button onclick="handleCart()" value="{{bikedata.variants.[0].colorName}}" id="cart"
+            class="group my-2 p-2 px-4 bg-blue-700 hover:bg-blue-800 text-gray-200 hover:text-white rounded-full text-xs font-medium flex gap-2 justify-center items-center relative">
+            <span class="font-sans">Add To Cart</span>
+            <span
+              class="transition-all duration-500 ease-in-out w-0 flex items-center justify-center overflow-hidden group-hover:w-4">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+          </button>
+          <p class="my-2 p-2 px-4 font-normal text-gray-700 dark:text-gray-400">
+            Rs. {{beautifyNumber bikedata.price }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const handleColor = (imageLink, color) => {
+    const imageHolder = document.getElementById('imageHolder')
+    imageHolder.src = imageLink
+    document.getElementById('cart').value = color
+  }
+  let array = [];
+
+  const handleCart = () => {
+    // Retrieve the item from localStorage
+    const getItem = localStorage.getItem('key');
+
+    // Parse the retrieved item and ensure it's an array
+    if (getItem) {
+      try {
+        array = JSON.parse(getItem);
+        if (!Array.isArray(array)) {
+          array = [];
+        }
+      } catch (e) {
+        array = [];
+      }
+    }
+
+    console.log(array);
+
+    // Create the cart data object (replace placeholders with actual values)
+    const cartdata = {
+      name: "{{bikedata.name}}",  // Replace this with the actual bike name
+      price: `{{ beautifyNumber bikedata.price }}`,
+      image: `{{bikedata.variants.[0].imageLink}}`  // Replace this with the actual image link
+    };
+
+    // Add the new cart data to the array
+    array.push(cartdata);
+
+    // Save the updated array back to localStorage
+    localStorage.setItem('key', JSON.stringify(array));
+  };
+
+</script>

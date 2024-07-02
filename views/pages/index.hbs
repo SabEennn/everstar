@@ -1,0 +1,43 @@
+<div data-scroll-section class="landing-page bg-[#f1f1f1] section">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper h-[88vh]">
+      <div class="swiper-slide flex justify-center">
+        <img class="object-contain" src="images/landingpage/bike1.jpg" alt="" />
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img class="object-contain" src="images/landingpage/bike2.jpg" alt="" />
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img class="object-contain" src="images/landingpage/bike3.jpg" alt="" />
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img class="object-contain" src="images/landingpage/bike4.jpg" alt="" />
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img class="object-contain" src="images/landingpage/bike5.jpg" alt="" />
+      </div>
+    </div>
+    <div class="text-neutral-800 swiper-button-next"></div>
+    <div class="text-neutral-800 swiper-button-prev"></div>
+    <div
+      data-scroll
+      class="text-neutral-800 swiper-pagination !bg-transparent mb-20 scale-75"
+    ></div>
+  </div>
+
+  <section data-scroll-section class="p-5 min-h-screen flex flex-col justify-center mt-72">
+    <div class="p-5 text-center font-bold text-4xl my-20">Shop Bikes</div>
+
+    <div class="bike-container grid grid-cols-1 md:grid-cols-2 gap-10">
+      {{#each bikedata}}
+      <div class="bikes shadow-lg w-full sm:w-md min-h-[20vh] p-20">
+        <a href="/{{ this.id }}">
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="{{this.variants.[0].imageLink}}" /></div
+        ></a>
+      </div>
+      {{/each}}
+      <script></script>
+    </div>
+  </section>
+</div>

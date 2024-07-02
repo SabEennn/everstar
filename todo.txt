@@ -1,0 +1,4 @@
+add toast 
+price beautify  
+
+setItem and getItem done, now display the cart on  click on icon 

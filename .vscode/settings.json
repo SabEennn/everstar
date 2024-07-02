@@ -1,0 +1,17 @@
+{
+  "git.ignoreLimitWarning": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.includeLanguages": {
+    "HTML (Eex)": "html",
+    "HTML (EEx)": "html",
+    "plaintext": "html",
+    "Handlebars": "html"
+  },
+"tailwindCSS.emmetCompletions": true,
+"[handlebars]": {
+  "editor.defaultFormatter": "vscode.html-language-features"
+},
+}

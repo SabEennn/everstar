@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <!-- Include any CSS files -->
+
+    {{!-- this will render the links of the specific page --}}
+    {{> links}}
+  </head>
+  <body data-scroll-container>
+    <!-- Navbar -->
+    {{> navbar}}
+
+    {{{body}}}
+    <!-- This will render the body of the specific page -->
+    <!-- Footer -->
+    {{> footer}}
+
+    {{!-- this will render the scripts of the pages --}}
+    {{> scripts}}
+  </body>
+</html>

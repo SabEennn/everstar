@@ -5,7 +5,6 @@
 <script src="flowbite/flowbite.min.js"></script>
 
 <script src="handlebars/handlebars.js"></script>
-
 <script src="locomotive/locomotive-scroll.min.js"></script>
 <script type="text/javascript" src="toastify/toastify-js.js"></script>
 <script src="js/script.js"></script>
@@ -14,15 +13,18 @@
 <script>
     var isShown = false;
 
+    const cartWrapper = document.querySelector('#cart-wrapper');
     function displayItems() {
-        const displayHere = document.getElementById('displayHere');
 
         if (isShown) {
             isShown = false;
-            displayHere.style.display = "none";
+            cartWrapper.style.width = '0'
+
+
         } else {
             isShown = true;
-            displayHere.style.display = "block";
+            cartWrapper.style.width = '33.33%';
+
 
             // Fetch items from local storage
             const getItem = localStorage.getItem('key');
@@ -40,20 +42,24 @@
             }
 
             // Clear previous content
-            displayHere.innerHTML = '';
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            if (array.length == 0) {
+                cartItems.innerHTML = '<span class= " flex justify-center items-center text-center capitalize text-md font-bold w-full"> your cart is empty </span>'
+            }
 
             // Generate HTML for each item
             array.forEach(item => {
                 const itemHTML = `
-                <div class="cart-item my-4 p-4 bg-gray-200 rounded-lg shadow-md flex items-center">
-                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg" />
-                    <div class="ml-4">
-                        <p class="font-medium text-gray-900">${item.name}</p>
-                        <p class="text-gray-700">${item.price}</p>
-                    </div>
-                </div>
-            `;
-                displayHere.innerHTML += itemHTML;
+          <div class="cart-item my-4 p-4 bg-gray-200 rounded-lg shadow-md flex items-center">
+            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg" />
+            <div class="ml-4">
+              <p class="font-medium text-gray-900">${item.name}</p>
+              <p class="text-gray-700">${item.price}</p>
+            </div>
+          </div>
+        `;
+                cartItems.innerHTML += itemHTML;
             });
         }
     }
@@ -62,9 +68,50 @@
         // Clear items from local storage
         localStorage.removeItem('key');
 
-        // Clear displayHere section
-        const displayHere = document.getElementById('displayHere');
-        displayHere.innerHTML = '';
+        // Clear cartItems section
+        const cartItems = document.getElementById('cartItems');
+
+        cartItems.innerHTML = '';
+        cartItems.innerHTML = '<span class= " flex justify-center items-center text-center capitalize text-md font-bold w-full"> your cart is empty </span>'
+        updateCounter();
     }
 
+    scroll.on('scroll', (obj) => {
+        console.log(obj.scroll.y);
+        if (obj.scroll.y > 200) {
+            cartWrapper.style.width = '0';
+        }
+        else (cartWrapper.style.width = '33.33%')
+    });
+
+    const updateCounter = () => {
+        const getItem = localStorage.getItem('key');
+        let arr = [];
+
+        if (getItem) {
+            try {
+                arr = JSON.parse(getItem);
+                if (!Array.isArray(arr)) {
+                    arr = [];
+                }
+            } catch (e) {
+                arr = [];
+            }
+        }
+
+        if (arr.length == 0) {
+            document.getElementById("cart-counter").style.display = 'none'
+        }
+        else {
+            document.getElementById("cart-counter").style.display = 'flex'
+            document.getElementById("cart-counter").innerHTML = arr.length;
+
+        }
+
+
+    }
+    //update counter on document loaded
+    document.addEventListener("DOMContentLoaded", (event) => {
+        updateCounter();
+    });
 </script>

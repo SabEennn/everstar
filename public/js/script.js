@@ -20,20 +20,21 @@ var swiper = new Swiper('.mySwiper', {
   },
 })
 
-let handleScroll = () => {
-  let currentScroll = document.body.scrollTop || document.documentElement.scrollTop
+// let handleScroll = () => {
+//   let currentScroll = document.body.scrollTop || document.documentElement.scrollTop
+//   console.log(currentScroll)
 
-  if (currentScroll > handleScroll.lastScroll) {
-    document.getElementById('nav').style.top = '-100px'
-  } else {
-    //scroll up
-    document.getElementById('nav').style.top = '0'
-  }
-  handleScroll.lastScroll = currentScroll
-}
+//   if (currentScroll > handleScroll.lastScroll) {
+//     document.getElementById('nav').style.top = '-100px'
+//   } else {
+//     //scroll up
+//     document.getElementById('nav').style.top = '0'
+//   }
+//   handleScroll.lastScroll = currentScroll;
+// }
 
-handleScroll.lastScroll = 0
-window.addEventListener('scroll', handleScroll, false)
+// handleScroll.lastScroll = 0;
+// // window.addEventListener('scroll', handleScroll, false);
 
 //to beautify the price
 

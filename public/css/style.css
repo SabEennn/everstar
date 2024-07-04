@@ -107,6 +107,11 @@ html.has-scroll-dragging {
   bottom: 0;
 }
 
+/* hiding the cart on scroll */
+.change{
+  display: none;
+}
+
 
 @tailwind base;
 @tailwind components;

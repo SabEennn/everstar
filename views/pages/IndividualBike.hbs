@@ -4,23 +4,23 @@
     <div class="h-[88vh]">
       <img id="imageHolder" class="h-full w-full object-contain" src="{{bikedata.variants.[0].imageLink}}" alt="" />
     </div>
-    <div class="bg-slate-950/5 kbackdrop-blur-sm py-4 flex flex-col justify-between m-14 px-5 my-36 h-auto rounded-xl">
+    <div class="info-wrapper bg-slate-950/5 backdrop-blur-sm py-4 flex flex-col justify-between m-14 px-5 rounded-xl">
       <div class="">
         <div class="w-60">
-          <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             {{ bikedata.name }}
           </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 word">
+          <p class="font-normal text-gray-700 dark:text-gray-400">
             {{ bikedata.description }}
           </p>
         </div>
       </div>
 
-      <div class="mt-5">
+      <div class="mt-4">
         <div class="flex gap-5 cursor-crosshair">
           {{#each bikedata.variants}}
-          <div onclick="handleColor( '{{ this.imageLink }}','{{ this.colorName }}' )"
-            class=" hover:scale-105 bg-[{{this.hexCodes.[0]}}] h-10 aspect-square rounded-full "></div>
+          <div onclick="handleColor('{{ this.imageLink }}','{{ this.colorName }}')"
+            class="hover:scale-105 bg-[{{this.hexCodes.[0]}}] h-10 aspect-square rounded-full"></div>
           {{/each}}
         </div>
 
@@ -41,6 +41,7 @@
     </div>
   </div>
 </div>
+
 
 
 <script>

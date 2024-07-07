@@ -13,7 +13,7 @@
 <script>
     var isShown = false;
 
-    const cartWrapper = document.querySelector('#cart-wrapper');
+    const cartWrapper = document.querySelector('#cartWrapper');
     function displayItems() {
 
         if (isShown) {
@@ -113,5 +113,17 @@
     //update counter on document loaded
     document.addEventListener("DOMContentLoaded", (event) => {
         updateCounter();
+    });
+
+
+
+
+    //for hiding the div on clicking outside of the div
+
+    document.addEventListener('click', (event) => {
+        const check = cartWrapper.contains(event.target);
+        if (!check) {
+            cartWrapper.style.display = 'none';
+        }
     });
 </script>
